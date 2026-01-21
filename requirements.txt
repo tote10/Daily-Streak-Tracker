@@ -1,0 +1,2 @@
+# No external dependencies required
+# The application uses only Python standard library (tkinter, json, datetime, pathlib)
