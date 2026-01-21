@@ -32,7 +32,7 @@ def test_mark_activity():
     today = date.today().isoformat()
     
     success = StreakManager.mark_activity(streak, today, "Solved problem #1")
-    assert success == True
+    assert success
     assert streak.current_streak == 1
     assert streak.longest_streak == 1
     assert streak.last_activity_date == today
@@ -83,23 +83,23 @@ def test_restore_token():
     print("\nTest 5: Testing restore token functionality...")
     token = RestoreToken(month="2026-01")
     
-    assert token.can_restore() == True
+    assert token.can_restore()
     assert token.remaining_tokens() == 2
     
     # Use first token
     success = token.use_token()
-    assert success == True
+    assert success
     assert token.remaining_tokens() == 1
     
     # Use second token
     success = token.use_token()
-    assert success == True
+    assert success
     assert token.remaining_tokens() == 0
     
     # Try to use third token (should fail)
     success = token.use_token()
-    assert success == False
-    assert token.can_restore() == False
+    assert not success
+    assert not token.can_restore()
     print("✓ Restore token functionality successful")
 
 
@@ -119,7 +119,7 @@ def test_streak_restore():
     
     # Restore the streak
     success = StreakManager.restore_streak(streak, token)
-    assert success == True
+    assert success
     assert token.tokens_used == 1
     print("✓ Streak restoration successful")
 
@@ -136,7 +136,7 @@ def test_storage():
     # Save to temporary file
     storage = Storage(data_file="test_data.json")
     success = storage.save(app_data)
-    assert success == True
+    assert success
     
     # Load data
     loaded_data = storage.load()
@@ -158,11 +158,11 @@ def test_duplicate_activity():
     
     # First activity
     success1 = StreakManager.mark_activity(streak, today)
-    assert success1 == True
+    assert success1
     
     # Try to mark again for same day
     success2 = StreakManager.mark_activity(streak, today)
-    assert success2 == False
+    assert not success2
     assert len(streak.activity_logs) == 1
     print("✓ Duplicate activity prevention successful")
 
