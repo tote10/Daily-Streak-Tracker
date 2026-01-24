@@ -1,4 +1,45 @@
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
-streaks.json
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Application data (user's streak data)
+streak_data.json
+test_data.json
+
+# Temporary files
+/tmp/
+*.tmp
